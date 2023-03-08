@@ -21,11 +21,14 @@ const CreatePost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError("");
+    console.log(formError)
 
     // validate image
     try {
       new URL(image);
     } catch (error) {
+      console.log('catch')
+
       setFormError("A imagem precisa ser uma URL.");
     }
 
@@ -34,10 +37,12 @@ const CreatePost = () => {
 
     // check values
     if (!title || !image || !tags || !body) {
+      console.log('aaaaa')
+
       setFormError("Por favor, preencha todos os campos!");
     }
 
-    if(formError || formError.length <= 0) return 
+    if(formError) return 
 
     insertDocument({
       title,
